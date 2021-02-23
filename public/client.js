@@ -4,9 +4,9 @@ const textArea = document.querySelector('#textarea');
 const messageArea = document.querySelector('.message_area');
 const button = document.querySelector('.button');
 
-// do {
-//   name = prompt("Please enter your name: ");
-// } while (!name);
+do {
+  name = prompt("Please enter your name: ");
+} while (!name);
 textArea.addEventListener('keyup', (e) => {
   if (e.key === 'Enter' && e.target.value) {
     sendMessage(e.target.value);
