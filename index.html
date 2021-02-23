@@ -9,21 +9,21 @@
 
 <body>
   <section class="chat_section">
+
     <div class="brand">
       <img height="50px" src="/logo.png">
     </div>
 
-    <div class="message_area">
+    <div class="message_area"></div>
 
-    </div>
-
-    <div>
-      <textarea id="textarea" rows="1" cols="30" placeholder="write a message."></textarea>
+    <div class='send'>
+      <input id="textarea" type="text" placeholder="write a message.">
+      <button type="button" class="button">Send</button>
     </div>
   </section>
 
 
-<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+  <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="/client.js" charset="utf-8"></script>
 </body>
 

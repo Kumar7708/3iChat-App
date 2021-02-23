@@ -24,7 +24,7 @@ section.chat_section {
 
 .brand {
   padding: 20px;
-  background:#444;
+  background: #444;
 }
 
 .message_area {
@@ -36,14 +36,15 @@ section.chat_section {
   padding-top: 40px;
 }
 
-
-textarea{
-  width: 100%;
+#textarea {
+  width: 90%;
   border: none;
+  margin: 0.5rem 0;
+  border-radius: 20px;
   padding: 20px;
   font-size: 16px;
   outline: none;
-  background: #FBFBFB;
+  background: #f2f2f2;
 }
 
 .message {
@@ -51,6 +52,7 @@ textarea{
   border-radius: 4px;
   margin-bottom: 40px;
   max-width: 300px;
+  min-width: 50px;
   position: relative;
 }
 
@@ -67,15 +69,30 @@ textarea{
 .message h4 {
   position: absolute;
   top: -20px;
-  left: 0;
+  right: 0;
   color: #333;
   font-size: 14px;
 }
 
+.send {
+  display: flex;
+  flex-direction: row;
+}
 
+.button {
+  background: #444;
+  border: none;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  color: #fff;
+}
 
-
-
-
+.button:hover {
+  background-color: black;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 
 h
