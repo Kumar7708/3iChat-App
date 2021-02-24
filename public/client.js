@@ -4,21 +4,20 @@ const textArea = document.querySelector('#textarea');
 const messageArea = document.querySelector('.message_area');
 const button = document.querySelector('.button');
 
-do {
-  name = prompt("Please enter your name: ");
-} while (!name);
+// do {
+//   name = prompt("Please enter your name: ");
+// } while (!name);
 textArea.addEventListener('keyup', (e) => {
-  if (e.key === 'Enter' && e.target.value) {
-    sendMessage(e.target.value);
-  }
-});
-
-button.addEventListener('click', () => {
-  if(textArea.value){
+  if (e.key === 'Enter' && textArea.value) {
     sendMessage(textArea.value);
   }
 });
 
+button.addEventListener('click', () => {
+  if (textArea.value) {
+    sendMessage(textArea.value);
+  }
+});
 
 function sendMessage(message) {
   let msg = {
@@ -31,7 +30,6 @@ function sendMessage(message) {
 
   socket.emit('message', msg);
 
-
 }
 
 function appendMessage(msg, type) {
@@ -39,8 +37,8 @@ function appendMessage(msg, type) {
   let mainDiv = document.createElement('div');
   let className = type;
   mainDiv.classList.add(className, 'message');
-  if(type == 'outgoing'){
-    pos='right';
+  if (type == 'outgoing') {
+    pos = 'right';
   }
 
   let markup = `
@@ -51,8 +49,7 @@ function appendMessage(msg, type) {
   messageArea.appendChild(mainDiv);
 }
 
-
-socket.on('message', (msg)=>{
+socket.on('message', (msg) => {
   appendMessage(msg, 'incoming');
   scrollToBottom();
 
@@ -62,3 +59,20 @@ socket.on('message', (msg)=>{
 function scrollToBottom() {
   messageArea.scrollTop = messageArea.scrollHeight;
 }
+
+socket.on('connect', ()=>{
+  socket.emit('joined', name);
+})
+
+
+socket.on('joined', (name)=>{
+  let mainDiv = document.createElement('div');
+  mainDiv.classList.add('center');
+
+  let markup = `
+  <h4>${name} joined the chat!</h4>
+  `;
+  mainDiv.innerHTML = markup;
+  messageArea.appendChild(mainDiv);
+  scrollToBottom();
+});

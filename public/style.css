@@ -53,6 +53,7 @@ section.chat_section {
   margin-bottom: 40px;
   max-width: 300px;
   min-width: 50px;
+  word-wrap: break-word;
   position: relative;
 }
 
@@ -64,6 +65,17 @@ section.chat_section {
 .outgoing {
   background: #e9eafd;
   margin-left: auto;
+}
+
+.center {
+  /* background: rgba(0, 0, 0, 0.24); */
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  /* border-radius: 20px; */
+  /* margin: auto; */
+  padding: 10px;
+  position: relative;
 }
 
 .message h4 {

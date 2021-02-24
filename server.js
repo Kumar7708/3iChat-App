@@ -12,11 +12,22 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+
   socket.on('message', (msg) => {
     socket.broadcast.emit('message', msg);
   });
 
+  socket.on('joined', (name) => {
+    socket.broadcast.emit('joined', name);
+  });
+
+  socket.on('disconnect', () => {
+    // socket.broadcast.emit('left');
+    console.log('left');
+  })
+
 });
+
 
 
 http.listen(port, () => {
