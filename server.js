@@ -12,22 +12,27 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-
+  let Name = '';
   socket.on('message', (msg) => {
     socket.broadcast.emit('message', msg);
   });
 
-  socket.on('joined', (name) => {
-    socket.broadcast.emit('joined', name);
+  socket.on('chatJoinOrLeave', (name) => {
+    Name = name;
+    socket.broadcast.emit('chatJoinOrLeave', {
+      name: name,
+      type: 'joined'
+    });
   });
 
   socket.on('disconnect', () => {
-    // socket.broadcast.emit('left');
-    console.log('left');
-  })
+    socket.broadcast.emit('chatJoinOrLeave', {
+      name: Name,
+      type: 'left'
+    });
+  });
 
 });
-
 
 
 http.listen(port, () => {
